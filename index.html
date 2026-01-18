@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Image Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Category Filter -->
+    <header class="gallery-header">
+        <h1>Image Gallery</h1>
+        <nav class="filter-bar">
+            <button class="filter-btn active" data-category="all">All</button>
+            <button class="filter-btn" data-category="nature">Nature</button>
+            <button class="filter-btn" data-category="architecture">Architecture</button>
+        </nav>
+    </header>
+
+    <!-- Gallery Grid -->
+    <main class="gallery-container" id="gallery">
+        <!-- Gallery items will be generated here -->
+    </main>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="lightbox-content">
+            <button id="close-btn" class="control-btn close" aria-label="Close Lightbox">&times;</button>
+            <button id="prev-btn" class="control-btn prev" aria-label="Previous Image">&#10094;</button>
+            
+            <img id="lightbox-img" src="" alt="Full screen view">
+            <div id="caption" class="caption"></div>
+            
+            <button id="next-btn" class="control-btn next" aria-label="Next Image">&#10095;</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
