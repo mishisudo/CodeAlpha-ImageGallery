@@ -1,0 +1,147 @@
+/* style.css */
+:root {
+    --primary-color: #333;
+    --overlay-color: rgba(0, 0, 0, 0.9);
+    --transition-speed: 0.3s;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+/* --- Filter Bar --- */
+.gallery-header {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    margin: 0 5px;
+    border: none;
+    background: #ddd;
+    cursor: pointer;
+    transition: background 0.3s;
+    border-radius: 20px;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background: #333;
+    color: #fff;
+}
+
+/* --- Gallery Grid Layout --- */
+.gallery-container {
+    display: grid;
+    gap: 15px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* Default: 4 columns for desktop */
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* Tablet: 2 columns */
+@media (max-width: 1024px) {
+    .gallery-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile: 1 column */
+@media (max-width: 600px) {
+    .gallery-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Image Cards --- */
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 8px;
+    aspect-ratio: 3 / 2; /* Enforce consistent aspect ratio */
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image fills box without distortion */
+    transition: transform var(--transition-speed);
+    display: block;
+}
+
+/* Hover Effect: Scale Up */
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-item.hidden {
+    display: none; /* For filtering */
+}
+
+/* --- Lightbox (Modal) --- */
+.lightbox {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: var(--overlay-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-speed);
+    z-index: 1000;
+}
+
+.lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.lightbox-content img {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+/* Controls */
+.control-btn {
+    position: absolute;
+    background: transparent;
+    color: white;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 10px;
+    transition: transform 0.2s;
+}
+
+.control-btn:hover { transform: scale(1.2); }
+.close { top: -40px; right: 0; }
+.prev { left: -60px; top: 50%; transform: translateY(-50%); }
+.next { right: -60px; top: 50%; transform: translateY(-50%); }
+
+.caption {
+    color: #ccc;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1.1rem;
+}
+
+/* Mobile Adjustments for Lightbox */
+@media (max-width: 768px) {
+    .prev { left: 10px; }
+    .next { right: 10px; }
+}
